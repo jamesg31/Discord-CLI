@@ -17,12 +17,12 @@ client.on('ready', () => {
       } else {
         console.log(`Guild set to ${guild}.`);
       }
-    } else if (command[0] == 'create_catagory') {
+    } else if (command[0] == 'create_category') {
       if (guild != null) {
         await guild.createChannel(command[1], {
           type: 'category',
         }).then(result => {
-          console.log(`Catagory "${result.name}" was created.`);
+          console.log(`Category "${result.name}" was created.`);
         }).catch(err => {
           console.log('There was an error.');
         });
@@ -34,14 +34,14 @@ client.on('ready', () => {
         var channel;
         if (command[2] != undefined) {
           try {
-            var catagory = client.channels.get(command[2]);
+            var category = client.channels.get(command[2]);
             channel = await guild.createChannel(command[1], {
               type: 'text',
             });
             await channel.setParent(command[2]);
-            console.log(`Channel "${channel.name}" was created in the catagory "${catagory.name}".`);  
+            console.log(`Channel "${channel.name}" was created in the category "${category.name}".`);  
           } catch (err) {
-            console.log(`No catagory could be found with the id ${command[2]}.`);
+            console.log(`No category could be found with the id ${command[2]}.`);
           }
         } else {
           channel = await guild.createChannel(command[1], {
@@ -56,9 +56,9 @@ client.on('ready', () => {
       if (guild != null) {
         try {
           await client.channels.get(command[1]).setParent(command[2]);
-          console.log(`Channel "${client.channels.get(command[1]).name}" moved to catagory "${client.channels.get(command[2]).name}".`);
+          console.log(`Channel "${client.channels.get(command[1]).name}" moved to category "${client.channels.get(command[2]).name}".`);
         } catch (err) {
-          console.log(`Channel or catagory id is invalid.`);
+          console.log(`Channel or category id is invalid.`);
         }
       } else {
         console.log('Please select a server using set_guild <id>.');
@@ -101,9 +101,9 @@ client.on('ready', () => {
       } else if (command[0] == 'help') {
         console.log('Command Help:');
         console.log('set_guild: <id> - Sets server ID.');
-        console.log('create_catagory: <name> - Creates catagory.');
-        console.log('create_channel: <name> <optional: catagory id> - Creates channel in optional catagory.');
-        console.log('move_channel: <channel id> <new catagory id> - Moves channel to a catagory.');
+        console.log('create_category: <name> - Creates category.');
+        console.log('create_channel: <name> <optional: category id> - Creates channel in optional category.');
+        console.log('move_channel: <channel id> <new category id> - Moves channel to a category.');
         console.log('send_webhook: <webhook url> - Sends webhook to URL.');
         console.log('quit - Quits app and shuts down bot.');
       } else if (command[0] == 'quit') {

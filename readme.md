@@ -27,7 +27,7 @@ This readme will frequently reference the use of ID's. To find an ID, open your 
 When running the tool, if you wish make any changes to a specific server you must first set the guild. To do this type `set_guild <id>` replacing ID with the ID of the server you wish to manage. This must be done every time you use the tool.
 
 ## Creating a Category
-To create a category use the command `create_catagory <name>` replacing name with the name of the category you with to create.
+To create a category use the command `create_category <name>` replacing name with the name of the category you with to create.
 
 ## Creating a Channel
 A channel can be created by using the command `create_channel <name>` replacing name with the name of the channel you wish to create.
