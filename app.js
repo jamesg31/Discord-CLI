@@ -69,6 +69,17 @@ client.on('ready', () => {
       } else {
         console.log('Please select a server using set_guild <id>.');
       }
+    } else if (command[0] == 'create_webhook') {
+      try {
+        var webhookChannel = client.channels.get(command[1]);
+        wb = await webhookChannel.createWebhook(command[2], command[3]).then(wb => {
+          console.log(`Webhook created with the name "${wb.name}" in channel "${webhookChannel.name}.`);
+          console.log(`Webhook URL: https://discordapp.com/api/webhooks/${wb.id}/${wb.token}`);
+        });
+      } catch (err) {
+        console.log('Inputs invalid.');
+        console.log(err);
+      }
     } else if (command[0] == 'send_webhook') {
       var data;
         if (readlineSync.keyInYNStrict('Do you want to send an embed?')) {
@@ -110,6 +121,7 @@ client.on('ready', () => {
         console.log('create_category: <name> - Creates category.');
         console.log('create_channel: <name> <optional: category id> - Creates channel in optional category.');
         console.log('move_channel: <channel id> <new category id> - Moves channel to a category.');
+        console.log('create_webhook: <channel id> <webhook name> <webhook image> - Creates webhook in specified channel.');
         console.log('send_webhook: <webhook url> - Sends webhook to URL.');
         console.log('quit - Quits app and shuts down bot.');
       } else if (command[0] == 'quit') {

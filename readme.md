@@ -39,6 +39,9 @@ To create a channel within a category use `create_channel <name> <id>` replacing
 ## Moving a Channel
 To move a channel into a category or from one category to another, use the command `move_channel <channel id> <category id>` replacing channel ID with the ID of the channel you wish to move and category ID with the ID of the category you wish to move the channel into.
 
+## Creating Webhooks
+You can create a webhook using the `create_webhook <channel id> <name> <icon>` replacing channel ID with the ID of the channel you want ot make the webhook in, name with the name of the webhook, and icon with a direct URL to the image you want as an icon. Ex: https://i.imgur.com/p2qNFag.png
+
 ## Sending Webhooks
 You can send a webhook using the command `send_webhook <url>` replacing URL with the URL of the webhook you are trying to send to. It will then ask if you wish to send the webhook as an embed. If you select yes you will be guided through a creation wizard that will make your embed. If you select no you will be given an option of what content you wish to put send to the webhook.
 
