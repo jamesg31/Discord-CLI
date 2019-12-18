@@ -47,7 +47,7 @@ client.on('ready', () => {
           channel = await guild.createChannel(command[1], {
             type: 'text',
           });
-          console.log(`Channel "${channel.name}" was created.`)
+          console.log(`Channel "${channel.name}" was created.`);
         }
       } else {
         console.log('Please select a server using set_guild <id>.');
@@ -56,9 +56,9 @@ client.on('ready', () => {
       if (guild != null) {
         try {
           await client.channels.get(command[1]).setParent(command[2]);
-          console.log(`Channel "${client.channels.get(command[1]).name}" moved to catagory "${client.channels.get(command[2]).name}".`)
+          console.log(`Channel "${client.channels.get(command[1]).name}" moved to catagory "${client.channels.get(command[2]).name}".`);
         } catch (err) {
-          console.log(`Channel or catagory id is invalid.`)
+          console.log(`Channel or catagory id is invalid.`);
         }
       } else {
         console.log('Please select a server using set_guild <id>.');
@@ -110,7 +110,7 @@ client.on('ready', () => {
         client.destroy();
         return;
       } else {
-        console.log('Command Invalid: Enter help to view a list of valid commands.')
+        console.log('Command Invalid: Enter help to view a list of valid commands.');
       }
       main();
     } 
