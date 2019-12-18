@@ -1,0 +1,13 @@
+{
+    "name": "command-bot",
+    "version": "1.0.0",
+    "scripts": {
+        "start": "nodemon app.js"
+    },
+    "dependencies": {
+        "discord.js": "^11.5.1",
+        "node-fetch": "^2.6.0",
+        "node-webhooks": "^1.4.2",
+        "readline-sync": "^1.4.10"
+    }
+}
