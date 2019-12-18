@@ -19,13 +19,19 @@ client.on('ready', () => {
       }
     } else if (command[0] == 'create_category') {
       if (guild != null) {
-        await guild.createChannel(command[1], {
+        var categoryName;
+        if (command[1].includes('_')) {
+          categoryName = command[1].replace('_', ' ');
+        } else {
+          categoryName = command[1];
+        }
+        await guild.createChannel(categoryName, {
           type: 'category',
         }).then(result => {
           console.log(`Category "${result.name}" was created.`);
         }).catch(err => {
           console.log('There was an error.');
-        });
+        });  
       } else {
         console.log('Please select a server using set_guild <id>.');
       }
