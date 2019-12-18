@@ -8,7 +8,7 @@ var guild = null;
 
 client.on('ready', () => {
   async function main () {
-    command = readlineSync.promptCL();
+    var command = await readlineSync.promptCL();
     if (command[0] == 'set_guild') {
       guild = client.guilds.get(command[1]);
       if (guild == undefined) {
@@ -21,7 +21,7 @@ client.on('ready', () => {
       if (guild != null) {
         var categoryName;
         if (command[1].includes('_')) {
-          categoryName = command[1].replace('_', ' ');
+          categoryName = command[1].replace(/_/g, ' ');
         } else {
           categoryName = command[1];
         }
@@ -74,7 +74,7 @@ client.on('ready', () => {
         var webhookChannel = client.channels.get(command[1]);
         var webhookName;
         if (command[2].includes('_')) {
-          webhookName = command[2].replace('_', ' ');
+          webhookName = command[2].replace(/_/g, ' ');
         } else {
           webhookName = command[2];
         }
@@ -129,22 +129,22 @@ client.on('ready', () => {
           },
           body: JSON.stringify(data)
         });
-      } else if (command[0] == 'help') {
-        console.log('Command Help:');
-        console.log('set_guild: <id> - Sets server ID.');
-        console.log('create_category: <name> - Creates category.');
-        console.log('create_channel: <name> <optional: category id> - Creates channel in optional category.');
-        console.log('move_channel: <channel id> <new category id> - Moves channel to a category.');
-        console.log('create_webhook: <channel id> <webhook name> <webhook image> - Creates webhook in specified channel.');
-        console.log('send_webhook: <webhook url> - Sends webhook to URL.');
-        console.log('quit - Quits app and shuts down bot.');
-      } else if (command[0] == 'quit') {
-        client.destroy();
-        return;
-      } else {
-        console.log('Command Invalid: Enter help to view a list of valid commands.');
-      }
-      main();
+    } else if (command[0] == 'help') {
+      console.log('Command Help:');
+      console.log('set_guild: <id> - Sets server ID.');
+      console.log('create_category: <name> - Creates category.');
+      console.log('create_channel: <name> <optional: category id> - Creates channel in optional category.');
+      console.log('move_channel: <channel id> <new category id> - Moves channel to a category.');
+      console.log('create_webhook: <channel id> <webhook name> <webhook image> - Creates webhook in specified channel.');
+      console.log('send_webhook: <webhook url> - Sends webhook to URL.');
+      console.log('quit - Quits app and shuts down bot.');
+    } else if (command[0] == 'quit') {
+      client.destroy();
+      return;
+    } else {
+      console.log('Command Invalid: Enter help to view a list of valid commands.');
+    }
+    main();
     } 
   main();
 });
