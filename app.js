@@ -28,7 +28,7 @@ client.on('ready', () => {
         await guild.createChannel(categoryName, {
           type: 'category',
         }).then(result => {
-          console.log(`Category "${result.name}" was created.`);
+          console.log(`Category "${result.name}" was created with the id "${result.id}".`);
         }).catch(err => {
           console.log('There was an error.');
         });  
@@ -45,7 +45,7 @@ client.on('ready', () => {
               type: 'text',
             });
             await channel.setParent(command[2]);
-            console.log(`Channel "${channel.name}" was created in the category "${category.name}".`);  
+            console.log(`Channel "${channel.name}" was created in the category "${category.name}" with the id "${channel.id}".`);  
           } catch (err) {
             console.log(`No category could be found with the id ${command[2]}.`);
           }
@@ -53,7 +53,7 @@ client.on('ready', () => {
           channel = await guild.createChannel(command[1], {
             type: 'text',
           });
-          console.log(`Channel "${channel.name}" was created.`);
+          console.log(`Channel "${channel.name}" was created with the id "${channel.id}".`);
         }
       } else {
         console.log('Please select a server using set_guild <id>.');
