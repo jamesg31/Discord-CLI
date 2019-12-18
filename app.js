@@ -72,7 +72,13 @@ client.on('ready', () => {
     } else if (command[0] == 'create_webhook') {
       try {
         var webhookChannel = client.channels.get(command[1]);
-        wb = await webhookChannel.createWebhook(command[2], command[3]).then(wb => {
+        var webhookName;
+        if (command[2].includes('_')) {
+          webhookName = command[2].replace('_', ' ');
+        } else {
+          webhookName = command[2];
+        }
+        wb = await webhookChannel.createWebhook(webhookName, command[3]).then(wb => {
           console.log(`Webhook created with the name "${wb.name}" in channel "${webhookChannel.name}.`);
           console.log(`Webhook URL: https://discordapp.com/api/webhooks/${wb.id}/${wb.token}`);
         });

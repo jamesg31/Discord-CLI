@@ -29,7 +29,7 @@ When running the tool, if you wish make any changes to a specific server you mus
 ## Creating a Category
 To create a category use the command `create_category <name>` replacing name with the name of the category you with to create.
 
-To create a category with a space in the name, replace all spaces with `_`. The tool will automatically change all underscores to spaces.
+To create a category with spaces in the name, replace all spaces with `_`. The tool will automatically change all underscores to spaces.
 
 ## Creating a Channel
 A channel can be created by using the command `create_channel <name>` replacing name with the name of the channel you wish to create.
@@ -41,6 +41,8 @@ To move a channel into a category or from one category to another, use the comma
 
 ## Creating Webhooks
 You can create a webhook using the `create_webhook <channel id> <name> <icon>` replacing channel ID with the ID of the channel you want ot make the webhook in, name with the name of the webhook, and icon with a direct URL to the image you want as an icon. Ex: https://i.imgur.com/p2qNFag.png
+
+To create a webhook with spaces in the name, replace all spaces with `_`. The tool will automatically change all underscores to spaces.
 
 ## Sending Webhooks
 You can send a webhook using the command `send_webhook <url>` replacing URL with the URL of the webhook you are trying to send to. It will then ask if you wish to send the webhook as an embed. If you select yes you will be guided through a creation wizard that will make your embed. If you select no you will be given an option of what content you wish to put send to the webhook.
