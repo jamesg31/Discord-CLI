@@ -84,7 +84,6 @@ client.on('ready', () => {
         });
       } catch (err) {
         console.log('Inputs invalid.');
-        console.log(err);
       }
     } else if (command[0] == 'send_webhook') {
       var data;
@@ -103,12 +102,21 @@ client.on('ready', () => {
               i = false;
             }
           }
+          var footer = null;
+          var footerIcon = null;
+          if (readlineSync.keyInYNStrict('Do you want to add a footer?')) {
+            if (readlineSync.keyInYNStrict('Do you want to add an icon to the footer?')) {
+              footerIcon = readlineSync.question('Footer Icon: ');
+            }
+            footer = readlineSync.question('Footer Content: ');
+          }
           data = {
             "embeds": [{
               "title": title,
               "color": color,
               "description": description,
-              "fields": fields
+              "fields": fields,
+              "footer": {text: footer, icon_url: footerIcon}
             }]};
         } else {
           var content = readlineSync.question('WebHook Content: ');
